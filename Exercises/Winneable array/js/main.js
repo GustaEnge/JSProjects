@@ -1,33 +1,25 @@
 
-function winnableArray(array) {
-if (array[0]<= 0 || array[-1]>0 || Math.sum(position_array(array))!= (array.length)-1){
-  cond = false;
-}else{
-  cond =  true;
-}
-  let cond = furthest_reached >= last_idx?"Winnable":"Not Winneable";
-  return cond;
-  
+function winnableArray(array,pos) {
+  let list_values = pos.map((x) =>array[x]);
+  let sum_arr = arr => arr.reduce((a,b)=>a+b,0);
+  if (sum_arr(list_values) == (array.length)-1) {
+    return true;
+  }else{
+    return false;
+  }
 }
 function position_array(array){
-    let array_var = array.map(parseInt); 
-    let array_pos = [];
-    let i = 0;
-    let next_elem = (x) => array[x]+x;
-    let cond = false;
-    while(!cond){
-        if (array_var[i] == 0){
-            cond = true;
-        }            
-        if (array_var[i] != 0) {
-            array_pos.push(array_var[i]);
-        }
-        if (Math.abs(array_var[i]+array_var[next_elem(i)]) == 0){
-            cond = true;
-            }
-        i = next_elem(i);
-    }
+  let array_pos = [];
+  let i = 0;
+  if (array[0]<= 0){
     return array_pos;
+  }else{
+      while(array_pos.indexOf(i) == -1 && i<array.length){
+          array_pos.push(i);
+          i = array[i]+i;
+      }
+      return array_pos;
+  }      
 }
 function Enter(){
   let parentElement = document.getElementById("newArray").children;
@@ -38,24 +30,30 @@ function Enter(){
     listValues.push(parentElement[index].value);  
   }
   if (listValues.every(value => {return value != ""})){
+    listValues = listValues.map(numStr => parseInt(numStr));
     buildArray_filled(listValues.length,"array",listValues);
-    //let result = winnableArray(listValues,"array");  
-    //coloredPos(position_array(listValues),"array");    
-    coloredPos(listValues,"array");    
-    //alert(`This is a ${result} array.`);
-  }else{
+    let pos_list = position_array(listValues);
+    coloredPos(pos_list,"array");
+    let result = winnableArray(listValues,pos_list) ? "result-yes":"result-no";
+
+    let p_child = document.getElementById("finalResult").getElementsByTagName("p");
+    console.log(p_child);
+    let id_attribute = document.createAttribute("id");
+    id_attribute.value = result;
+    p_child[0].setAttributeNode(id_attribute);
+    }else{
     alert("Please, fill in all array positions");
   }
 }
 
 function coloredPos(array,obj){
-    let objectPage = document.getElementById(obj);
-    let children_ul = objectPage.children[0];
-    for (let index = 0; index < array.length; index++) {
+  let objectPage = document.getElementById(obj);
+  let children_ul = objectPage.children[0];
+  for (let index of array) {
     
-      let li = children_ul.children[index];
+    let li = children_ul.children[index];
       
-      li.style = "background-color:green;";
+      li.style = "background-color:coral;";
     }  
     
 }
@@ -64,7 +62,6 @@ function buildArray_filled(size,element,list){
   let content = "";
   let objectPage = document.getElementById(element);
   let children_ul = objectPage.children[0];
-  console.log(children_ul);
   for (let index = 0; index < size; index++) {
     content += `<li><p type="text">${list[index]}</p></li>`;
     

@@ -116,7 +116,7 @@ header{
   border-bottom: 10px solid rgb(30, 146, 39);
   padding-top: 5px;
   background-color: rgb(30, 146, 39);
-  content: "This is a winnable array";
+  content: "This is a winnable array, it reached the last position!!";
 }
 
 #result-no::after{

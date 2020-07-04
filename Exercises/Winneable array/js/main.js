@@ -1,4 +1,4 @@
-//This function will evaluate if the array (passed by argument) is winneable following its own values as steps taken.
+//This function will evaluate if the array (passed by argument) is winnable following its own values as steps taken.
 function winnableArray(array,pos) {
   let list_values = pos.map((x) =>array[x]);
   let sum_arr = arr => arr.reduce((a,b)=>a+b,0);//this sum will be compared, if array-position values reached the last position by adding each other

@@ -32,7 +32,7 @@ function Enter(){
   for (let index = 0; index < len; index++) {
     listValues.push(parentElement[index].value);  
   }
-  if (listValues.every(value => {return value != ""})){
+  if (listValues.every(value => {return value != false})){
     let size = listValues.length;
     listValues = listValues.map(numStr => parseInt(numStr));
     buildArray_filled(size,"array",listValues);

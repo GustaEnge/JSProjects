@@ -1,4 +1,4 @@
-//This function will evaluate if the array (passed by argument) is winnable following its own values as steps taken.
+//This function will evaluate if the array (passed by argument) is winneable following its own values as steps taken.
 function winnableArray(array,pos) {
   let list_values = pos.map((x) =>array[x]);
   let sum_arr = arr => arr.reduce((a,b)=>a+b,0);//this sum will be compared, if array-position values reached the last position by adding each other
@@ -23,7 +23,7 @@ function position_array(array){
   }      
 }
 
-//this will be triggered when clicked on HTML, this way it will call almost every essential function for this project to work properly
+//this will be triggered when clicked on HTML, this way will call almost all essential functions for it to work properly
 function Enter(){
   let parentElement = document.getElementById("newArray").children;
   let len = parentElement.length;
@@ -32,7 +32,7 @@ function Enter(){
   for (let index = 0; index < len; index++) {
     listValues.push(parentElement[index].value);  
   }
-  if (listValues.every(value => {return value != false})){
+  if (listValues.every(value => {return value == true })){
     let size = listValues.length;
     listValues = listValues.map(numStr => parseInt(numStr));
     buildArray_filled(size,"array",listValues);
@@ -49,11 +49,11 @@ function Enter(){
   }, pos_list.length*500);    
     
     }else{
-    alert("Please, fill in all array positions");
+    alert("Please, fill in all array positions properly by using only numbers");
   }
 }
 
-//This function simulates common sleep methods to wait n milisec after proceeding by using Promise
+//This function simulate common sleep methods to wait n milisec after proceeding by using Promise
 function sleep(ms){
   return new Promise (resolve => setTimeout(resolve, ms))
 }
@@ -97,7 +97,6 @@ function buildArray(size,element="newArray"){
 
 let arraySize_field = document.getElementById("arraySize");
 let size = 0;
-//Here an addEventListener to get every change on input tag, allowing it to know the size of array
 arraySize_field.addEventListener("input",(event) => {
   let value = event.target.value;
   if (isNaN(value)){

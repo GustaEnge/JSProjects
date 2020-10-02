@@ -23,7 +23,7 @@ function position_array(array){
   }      
 }
 
-//this will be triggered when clicked on HTML, this way will call almost all essential functions for this project to work properly
+//this will be triggered when clicked on HTML, this way it will call almost every essential function for this project to work properly
 function Enter(){
   let parentElement = document.getElementById("newArray").children;
   let len = parentElement.length;
@@ -97,7 +97,7 @@ function buildArray(size,element="newArray"){
 
 let arraySize_field = document.getElementById("arraySize");
 let size = 0;
-//Here an addEventListener to get every change on input tag allowing to know the size of array
+//Here an addEventListener to get every change on input tag, allowing it to know the size of array
 arraySize_field.addEventListener("input",(event) => {
   let value = event.target.value;
   if (isNaN(value)){

@@ -8,7 +8,7 @@
 | Winnable Array | array         |
 
 ---
-### Winnable Array
+### Winnable Array (https://gustaenge.github.io/JSProjects/winnable/winnable_main.html)
 #### Goal
 Determine if you can reach the last element on a positive/negative numbers array, according to
 these rules:

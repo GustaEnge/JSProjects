@@ -38,7 +38,7 @@ function Enter(){
     buildArray_filled(size,"array",listValues);
     let pos_list = position_array(listValues);
     setTimeout(() => {
-    coloredPos(pos_list,"array",size);
+    coloredPos(pos_list,listValues,"array",size);
     let result = winnableArray(listValues,pos_list) ? "result-yes":"result-no";
     let p_child = document.getElementById("finalResult").getElementsByTagName("p");
     let id_attribute = document.createAttribute("id");
@@ -58,7 +58,7 @@ function sleep(ms){
   return new Promise (resolve => setTimeout(resolve, ms))
 }
 //This function will print the result below Enter button and will color every position that match li tags and the evaluated array
-async function coloredPos(array,obj,size_values_array){
+async function coloredPos(array,array_values,obj,size_values_array){
   let objectPage = document.getElementById(obj);
   let children_ul = objectPage.children[0];
   for (let index of array) {
@@ -66,7 +66,7 @@ async function coloredPos(array,obj,size_values_array){
     let li = children_ul.children[index];
     console.log(index);
     /*here implements when the end of list is >0, so it won't color as green*/
-    if (index == size_values_array-1 && array[index] === 0){
+    if (index == size_values_array-1 && array_values[array_values.length-1] === 0){
       color = "background-color:rgb(30, 146, 39);"
     }
     await sleep(500).then(() => {li.style = color;})   

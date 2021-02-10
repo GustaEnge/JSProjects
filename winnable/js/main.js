@@ -82,6 +82,16 @@ function buildArray_filled(size,element,list){
     
   }
   children_ul.innerHTML = content;
+  /*a way of preventing users from typing letters*/
+  a = document.getElementsByClassName("item")
+  for (let index = 0; index < a.length; index++) {
+    a[index].addEventListener("keydown", function () {
+      if (event.key.length === 1 && /\D/.test(event.key)) {
+        event.preventDefault();
+  }
+  });
+}
+  
 }
 //Dynamically will provide input fields according to the value of the first Input (length of array)
 function buildArray(size,element="newArray"){

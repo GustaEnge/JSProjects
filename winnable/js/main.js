@@ -64,6 +64,7 @@ async function coloredPos(array,array_values,obj,size_values_array){
   for (let index of array) {
     let color = "background-color:coral;";
     let li = children_ul.children[index];
+    console.log(index);
     /*here implements when the end of list is >0, so it won't color as green*/
     if (index == size_values_array-1 && array_values[array_values.length-1] === 0){
       color = "background-color:rgb(30, 146, 39);"
@@ -82,16 +83,6 @@ function buildArray_filled(size,element,list){
     
   }
   children_ul.innerHTML = content;
-  /*a way of preventing users from typing letters*/
-  a = document.getElementsByClassName("item")
-  for (let index = 0; index < a.length; index++) {
-    a[index].addEventListener("keydown", function () {
-      if (event.key.length === 1 && /\D/.test(event.key)) {
-        event.preventDefault();
-  }
-  });
-}
-  
 }
 //Dynamically will provide input fields according to the value of the first Input (length of array)
 function buildArray(size,element="newArray"){
@@ -101,7 +92,17 @@ function buildArray(size,element="newArray"){
     content += `<input type="text" class="item" minlength="0" maxlength="2" pattern= "[0-9]">`
     
   }
+
   container_array.innerHTML = content;
+    /*a way of preventing users from typing letters*/
+  a = document.getElementsByClassName("item")
+  for (let index = 0; index < a.length; index++) {
+    a[index].addEventListener("keydown", function () {
+      if (event.key.length === 1 && /\D/.test(event.key)) {
+        event.preventDefault();
+  }
+  });
+}
   
 }
 

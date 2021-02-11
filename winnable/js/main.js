@@ -98,7 +98,7 @@ function buildArray(size,element="newArray"){
   a = document.getElementsByClassName("item")
   for (let index = 0; index < a.length; index++) {
     a[index].addEventListener("keydown", function () {
-      if (event.key.length === 1 && /\D/.test(event.key)) {
+      if (event.key.length === 1 && not(/-|\d/.test(event.key))) {
         event.preventDefault();
   }
   });

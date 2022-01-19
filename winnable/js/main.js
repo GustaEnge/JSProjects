@@ -62,11 +62,11 @@ async function coloredPos(array,array_values,obj,size_values_array){
   let objectPage = document.getElementById(obj);
   let children_ul = objectPage.children[0];
   for (let index of array) {
-    let color = "background-color:coral;";
+    let color = "border-color:coral;";
     let li = children_ul.children[index];
     /*here implements when the end of list is >0, so it won't color as green*/
     if (index == size_values_array-1 && array_values[array_values.length-1] === 0){
-      color = "background-color:rgb(30, 146, 39);"
+      color = "border-color:rgb(30, 146, 39);"
     }
     await sleep(500).then(() => {li.style = color;})   
   }  
